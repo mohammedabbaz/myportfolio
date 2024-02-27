@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 
 const links = [
   { url: "/", title: "Home" },
-  { url: "/Contact", title: "Contact" },
   { url: "/Portfolio", title: "Portfolio" },
   { url: "/About", title: "About" },
+  { url: "/Contact", title: "Contact" },
 ];
 
 function NavBar() {
@@ -112,7 +112,7 @@ function NavBar() {
       <div className="md:hidden">
         {/* menu button  */}
         <button
-          className="w-10 h-10 flex justify-evenly flex-col z-50 relative"
+          className="w-10 h-10 justify-around flex flex-col z-50 relative"
           onClick={() => setOpen(!open)}
         >
           <motion.div

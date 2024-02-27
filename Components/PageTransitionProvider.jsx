@@ -11,18 +11,18 @@ function PageTransitionProvider({ children }) {
     <AnimatePresence mode="wait">
       <div
         key={pathname}
-        className="w-screen h-screen bg-gradient-to-b from-white to-yellow-100 text-black "
+        className="w-screen h-screen bg-gradient-to-b from-white to-blue-200 text-black "
       >
         {/* page transition header */}
         <motion.div
-          className="bg-black fixed w-screen h-screen rounded-b-[100px] z-40 text-white flex items-center justify-center"
+          className="bg-blue-500 fixed w-screen h-screen rounded-b-[100px] z-40 text-white flex items-center justify-center"
           animate={{ height: "0vh" }}
           exit={{ height: "140vh" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         />
 
         <motion.div
-          className=" fixed m-auto left-0 right-0 bottom-0 top-0 text-white font-bold text-4xl z-50 w-fit h-fit"
+          className=" fixed m-auto left-0 right-0 bottom-0 top-0 text-white font-bold  text-4xl z-50 w-fit h-fit"
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           exit={{ opacity: 0 }}
@@ -32,7 +32,7 @@ function PageTransitionProvider({ children }) {
         </motion.div>
 
         <motion.div
-          className="bg-black fixed w-screen h-screen rounded-t-[100px] bottom-0  left-0 z-30 text-white"
+          className="bg-blue-500 fixed w-screen h-screen rounded-t-[100px] bottom-0  left-0 z-30 text-white"
           initial={{ height: "140vh" }}
           animate={{
             height: "0vh",

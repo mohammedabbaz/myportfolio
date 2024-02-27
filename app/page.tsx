@@ -7,7 +7,7 @@ export default function Home() {
     <motion.div
       className="h-full "
       initial={{ y: "-200vh" }}
-      animate={{ y: 0 }}
+      animate={{ y: "0%" }}
       transition={{ duration: 0.8 , ease:'easeOut' }}
     >
       <div className=" h-full gap-2 flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 text-xl">
