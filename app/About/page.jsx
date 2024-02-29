@@ -1,7 +1,26 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView, useScroll } from "framer-motion";
+import Developer from "../../Components/Developer.jsx";
 function page() {
+  // conatiner reference
+  const containerref = useRef();
+  // skills view  reference
+  const skillsInViewRef = useRef();
+  // Experience view  reference
+  const ExperienceInViewRef = useRef();
+  // to calculate scroll
+  const { scrollXProgress } = useScroll({ container: containerref });
+
+  // check ref is in view showing
+
+  const isSkillInView = useInView(skillsInViewRef, { margin: "-100px" });
+  // check experience  ref is in view showing
+
+  const isExperienceInView = useInView(ExperienceInViewRef, {
+    margin: "-100px",
+  });
+
   return (
     <motion.div
       className="h-full"
@@ -10,9 +29,9 @@ function page() {
       transition={{ duration: 0.5 }}
     >
       {/* container */}
-      <div className="h-full overflow-scroll lg:flex">
+      <div className="h-full overflow-scroll lg:flex" ref={containerref}>
         {/* text container biographique , skills , experiences */}
-        <div className=" flex flex-col p-4 sm:p-8 md:p-12 lg:p-20 xl:p-24 text-xl gap-24 md:gap-32 lg:gap-48 xl:gap-64 w-2/3 xl:w-1/2 ">
+        <div className=" flex flex-col p-4 sm:p-8 md:p-12 lg:p-20 xl:p-24 text-xl gap-24 md:gap-32 lg:gap-48 xl:gap-64 lg:w-2/3 lg:pr-0 xl:w-1/2 ">
           {/* biographie */}
           <div className=" flex flex-col gap-12 justify-center">
             {/* biography title */}
@@ -24,9 +43,12 @@ function page() {
               sequi at corporis ex! Est esse soluta tempore veniam dolor atque
               expedita.
             </p>
-         
+
             {/* scrol svg  */}
-            <svg
+            < motion.svg
+              initial={{ opacity: 0.2, y: 0 }}
+              animate={{ opacity: 1, y: "10px" }}
+              transition={{ repeat: Infinity, duration: 3  , ease:'easeInOut'}}
               width="100px"
               height="100px"
               viewBox="0 0 72 72"
@@ -121,14 +143,29 @@ function page() {
                   stroke-width="2"
                 />
               </g>
-            </svg>
+            </motion.svg>
           </div>
           {/* skills */}
-          <div className=" flex flex-col gap-12 justify-center">
+          <div
+            className=" flex flex-col gap-12 justify-center"
+            ref={skillsInViewRef}
+          >
             {/* skills title */}
-            <h1 className="text-2xl font-bold"> Skills</h1>
+            <motion.h1
+              initial={{ x: "-300px" }}
+              animate={isSkillInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="text-2xl font-bold"
+            >
+              Skills
+            </motion.h1>
             {/* list of skills */}
-            <div className="flex gap-4 flex-wrap">
+            <motion.div
+              initial={{ x: "-300px" }}
+              animate={isSkillInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="flex gap-4 flex-wrap"
+            >
               {/* skill item */}
               <div className="rounded-lg flex justify-center items-center  text-white p-2 cursor-pointer bg-blue-500 hover:bg-yellow-200 hover:text-black text-sm">
                 React
@@ -160,9 +197,12 @@ function page() {
               <div className="rounded-lg flex justify-center items-center  text-white p-2 cursor-pointer bg-blue-500 hover:bg-yellow-200 hover:text-black text-sm">
                 typescript
               </div>
-            </div>
+            </motion.div>
             {/* skill scroll */}
-            <svg
+            <motion.svg
+              initial={{ opacity: 0.2, y: 0 }}
+              animate={{ opacity: 1, y: "10px" }}
+              transition={{ repeat: Infinity, duration: 3  , ease:'easeInOut'}}
               width="100px"
               height="100px"
               viewBox="0 0 72 72"
@@ -257,14 +297,29 @@ function page() {
                   stroke-width="2"
                 />
               </g>
-            </svg>
+            </motion.svg>
           </div>
           {/* experiences */}
-          <div className=" flex flex-col gap-12 justify-center pb-48">
+          <div
+            className=" flex flex-col gap-12 justify-center pb-48"
+            ref={ExperienceInViewRef}
+          >
             {/* Experiences title */}
-            <h1 className="text-2xl font-bold"> Experiences</h1>
+            <motion.h1
+              initial={{ x: "-300px" }}
+              animate={isExperienceInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="text-2xl font-bold"
+            >
+              Experiences
+            </motion.h1>
             {/* list of Experiences */}
-            <div className=" flex flex-col gap-4">
+            <motion.div
+              initial={{ x: "-300px" }}
+              animate={isExperienceInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className=" flex flex-col gap-4"
+            >
               {/* Experience item  */}
               <div className="flex justify-between h-50">
                 {/* left */}
@@ -279,7 +334,7 @@ function page() {
                     Nihil, id!
                   </div>
                   {/* job Date  */}
-                  <div className="p-2 text-yellow-500 text-sm">2010 - 2020</div>
+                  <div className="p-2 text-blue-600 text-sm">2010 - 2020</div>
                   {/* job place company */}
                   <div className="font-semibold p-1 rounded-lg bg-white text-sm w-fit">
                     minnova consulting
@@ -290,7 +345,7 @@ function page() {
                   {/* line  */}
                   <div className="w-1 h-full bg-gray-500 rounded relative">
                     {/* circle */}
-                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-yellow-200"></div>
+                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-blue-600"></div>
                   </div>
                 </div>
                 {/* right */}
@@ -309,7 +364,7 @@ function page() {
                   {/* line  */}
                   <div className="w-1 h-full bg-gray-500 rounded relative">
                     {/* circle */}
-                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-yellow-200"></div>
+                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-blue-600"></div>
                   </div>
                 </div>
                 {/* right */}
@@ -324,7 +379,7 @@ function page() {
                     Nihil, id!
                   </div>
                   {/* job Date  */}
-                  <div className="p-2 text-yellow-500 text-sm">2010 - 2020</div>
+                  <div className="p-2 text-blue-600 text-sm">2010 - 2020</div>
                   {/* job place company */}
                   <div className="font-semibold p-1 rounded-lg bg-white text-sm w-fit">
                     minnova consulting
@@ -345,7 +400,7 @@ function page() {
                     Nihil, id!
                   </div>
                   {/* job Date  */}
-                  <div className="p-2 text-yellow-500 text-sm">2010 - 2020</div>
+                  <div className="p-2 text-blue-600 text-sm">2010 - 2020</div>
                   {/* job place company */}
                   <div className="font-semibold p-1 rounded-lg bg-white text-sm w-fit">
                     minnova consulting
@@ -356,7 +411,7 @@ function page() {
                   {/* line  */}
                   <div className="w-1 h-full bg-gray-500 rounded relative">
                     {/* circle */}
-                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-yellow-200"></div>
+                    <div className="absolute w-5 h-5 -left-2 aspect-square bg-white ring-4 ring-blue-600"></div>
                   </div>
                 </div>
                 {/* right */}
@@ -364,12 +419,12 @@ function page() {
                   <div className=""></div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
         {/* svg container */}
-        <div className="hidden lg:block w-1/3 xl:w-1/2 ">
-
+        <div className="hidden lg:block w-1/3 xl:w-1/2  sticky top-0">
+          <Developer scrollXProgress={scrollXProgress} />
         </div>
       </div>
     </motion.div>
