@@ -61,7 +61,7 @@ function page() {
       transition={{ duration: 0.5 }}
     >
       <div className="h-[600vh] relative " ref={ref}>
-        <div className="w-screen h-[calc(100vh-6rem)] text-black flex items-center justify-center text-6xl">
+        <div className="w-screen h-[calc(100vh-6rem)] text-black flex items-center justify-center text-2xl md:text-6xl ">
           List of My works
         </div>
         {/* list of project  */}
